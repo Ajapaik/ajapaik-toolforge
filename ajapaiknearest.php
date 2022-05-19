@@ -61,7 +61,7 @@ $properties=array(
    'favorites'   =>$v['favorited'],
    'rephotos'    =>count($v['rephotos']),
    'thumbnail'  =>str_replace("[DIM]", "400", $v['image']),
-//   'iiif_manifest'  => 'https://ajapaik.ee/photo/'.$v['id'].'/v2/manifest.json',
+   'iiif_manifest'  => 'https://ajapaik.ee/photo/'.$v['id'].'/v2/manifest.json',
 //   'licence_url' => 'https://creativecommons.org/licenses/by/4.0/deed.fi',
 //   'licence_label' => 'CC-BY-4.0',
 );
