@@ -38,6 +38,9 @@ $file=file_get_contents($url);
 $json=json_decode($file, true);
 
 $featurelist=array();
+
+$number_of_rephotos=count($json['sequences'][0]['canvases'])-1;
+
 foreach($json['sequences'][0]['canvases'] as $k=>$v) {
 
 $metadata=array();
@@ -82,7 +85,7 @@ foreach($v['metadata'] as $m) {
 
 $label=$v['label']['@value'];
 $description="";
-if (preg_match("|https://ajapaik.ee/photo/511580/canvas/.*?_([0-9]+)\z|ism", $v['@id'], $mm)) {
+if (preg_match("|https://ajapaik.ee/photo/".$params['id']."/canvas/.*?_([0-9]+)\z|ism", $v['@id'], $mm)) {
 	$photo_id=$mm[1];
 }
 
@@ -98,7 +101,7 @@ $properties=array(
    'source_url'  =>isset($metadata['Source']) ? $metadata['Source'] :"",
    'source_label'=>isset($metadata['Identifier']) ? $metadata['Identifier'] :"",
    'favorites'   =>"",
-   'rephotos'    =>"",
+   'rephotos'    =>$k==0 ? $number_of_rephotos : "",
    'thumbnail'  =>$v["thumbnail"]["@id"],
    'iiif_manifest'  => 'https://ajapaik.ee/photo/'.$photo_id.'/v2/manifest.json',
 //   'licence_url' => 'https://creativecommons.org/licenses/by/4.0/deed.fi',
