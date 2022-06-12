@@ -134,7 +134,7 @@ $featurelist[$properties["id"]]=$feature;
  
 $outjson=array(array(
   "type"=> "FeatureCollection",
-   "features"=> $featurelist
+   "features"=> array_values($featurelist)
 ));
  
 print(json_encode($outjson,  JSON_PRETTY_PRINT));
