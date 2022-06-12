@@ -60,7 +60,7 @@ foreach($v['metadata'] as $m) {
 		$coord=array();
 		if (preg_match("|Latitude: ?([0-9.]+)|ism", $m["value"], $mm))
 		{
-			$coord["Latitude"]=$mm[1];
+			$coord["Latitude"]=floatval($mm[1]);
 		}
 		else
 		{
@@ -69,7 +69,7 @@ foreach($v['metadata'] as $m) {
 	
 		if (preg_match("|Longitude: ?([0-9.]+)|ism", $m["value"], $mm))
 		{
-			$coord["Longitude"]=$mm[1];
+			$coord["Longitude"]=floatval($mm[1]);
 		}
 		else
 		{
